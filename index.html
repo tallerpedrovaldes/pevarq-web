@@ -1302,6 +1302,13 @@ async function openProyecto(idx) {
   goTo('proyecto');
 }
 
+function mediaTag(src, alt) {
+  const isVideo = /\.(mp4|webm|mov)$/i.test(src);
+  return isVideo
+    ? `<video src="${src}" autoplay muted loop playsinline></video>`
+    : `<img src="${src}" alt="${alt}">`;
+}
+
 function loadProyecto(idx) {
   const p = PROYECTOS[idx];
   if(!p) return;
@@ -1321,7 +1328,7 @@ function loadProyecto(idx) {
 
   if(heroEl) {
     heroEl.innerHTML = imgs.length
-      ? `<img src="${imgs[0]}" alt="${p.nombre}">`
+      ? mediaTag(imgs[0], p.nombre)
       : '<div class="proj-hero-ph"><span>Foto / Video principal</span></div>';
   }
 
@@ -1331,16 +1338,16 @@ function loadProyecto(idx) {
     let i = 0, big = false; // empezar con un par de fotos
     while(i < rest.length) {
       if(big) {
-        out += `<div class="proj-foto-single"><img src="${rest[i]}" alt="${p.nombre}"></div>
+        out += `<div class="proj-foto-single">${mediaTag(rest[i], p.nombre)}</div>
 `;
         i += 1;
       } else {
         if(i+1 < rest.length) {
-          out += `<div class="proj-foto-pair"><div class="proj-foto"><img src="${rest[i]}" alt="${p.nombre}"></div><div class="proj-foto"><img src="${rest[i+1]}" alt="${p.nombre}"></div></div>
+          out += `<div class="proj-foto-pair"><div class="proj-foto">${mediaTag(rest[i], p.nombre)}</div><div class="proj-foto">${mediaTag(rest[i+1], p.nombre)}</div></div>
 `;
           i += 2;
         } else {
-          out += `<div class="proj-foto-single"><img src="${rest[i]}" alt="${p.nombre}"></div>
+          out += `<div class="proj-foto-single">${mediaTag(rest[i], p.nombre)}</div>
 `;
           i += 1;
         }
@@ -1408,7 +1415,7 @@ function loadProyecto(idx) {
 
   if(heroEl) {
     heroEl.innerHTML = imgs.length
-      ? `<img src="${imgs[0]}" alt="${p.nombre}">`
+      ? mediaTag(imgs[0], p.nombre)
       : '<div class="proj-hero-ph"><span>Foto / Video principal</span></div>';
   }
 
@@ -1418,16 +1425,16 @@ function loadProyecto(idx) {
     let i = 0, big = false; // empezar con un par de fotos
     while(i < rest.length) {
       if(big) {
-        out += `<div class="proj-foto-single"><img src="${rest[i]}" alt="${p.nombre}"></div>
+        out += `<div class="proj-foto-single">${mediaTag(rest[i], p.nombre)}</div>
 `;
         i += 1;
       } else {
         if(i+1 < rest.length) {
-          out += `<div class="proj-foto-pair"><div class="proj-foto"><img src="${rest[i]}" alt="${p.nombre}"></div><div class="proj-foto"><img src="${rest[i+1]}" alt="${p.nombre}"></div></div>
+          out += `<div class="proj-foto-pair"><div class="proj-foto">${mediaTag(rest[i], p.nombre)}</div><div class="proj-foto">${mediaTag(rest[i+1], p.nombre)}</div></div>
 `;
           i += 2;
         } else {
-          out += `<div class="proj-foto-single"><img src="${rest[i]}" alt="${p.nombre}"></div>
+          out += `<div class="proj-foto-single">${mediaTag(rest[i], p.nombre)}</div>
 `;
           i += 1;
         }
