@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pevarq — pedro valdés arquitectos</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Lato:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0a0a0a; --white: #ffffff; --off: #f5f4f0;
+  --terracota: #b5572a;
+  --font-title: "Montserrat", sans-serif;
+  --font-body: "Lato", sans-serif;
+}
+
+/* =====================
+   TALLER
+   ===================== */
+#taller {
+  background: var(--white);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.tl-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 140px 110px;
+}
+.tl-content {
+  width: 100%;
+  max-width: 920px;
+}
+.tl-brand {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: clamp(20px, 2.4vw, 30px);
+  letter-spacing: .04em;
+  color: var(--black);
+  margin-bottom: 48px;
+  text-align: center;
+}
+.tl-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+.tl-text {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.5vw, 17px);
+  font-weight: 300;
+  line-height: 1.85;
+  color: #2a2a2a;
+  letter-spacing: .01em;
+  text-align: justify;
+}
+.tl-text em {
+  font-style: normal;
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  .tl-cols { grid-template-columns: 1fr; gap: 22px; }
+  .tl-wrap { padding: 100px 24px 90px 56px; }
+  .tl-brand { font-size: 18px; margin-bottom: 24px; }
+  .tl-text { font-size: 13px; line-height: 1.7; }
+}
+
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--white); color:var(--black); font-family:var(--font-body); font-weight:300; cursor:none; overflow:hidden; }
+
+/* CURSOR */
+.cursor { width:8px; height:8px; background:var(--black); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9999; }
+.cursor-ring { width:30px; height:30px; border:1px solid rgba(10,10,10,0.3); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transition:width .25s, height .25s, border-color .2s; }
+body.hovering .cursor-ring { width:48px; height:48px; border-color:var(--terracota); }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; justify-content:flex-end; align-items:center; padding:28px 44px; pointer-events:none; }
+.nav-iso { pointer-events:all; cursor:none; opacity:0; animation:fi 1.2s ease .3s forwards; }
+.nav-iso img { width:20px; display:block; transition:opacity .2s; }
+.nav-iso:hover img { opacity:0.5; }
+.menu-btn { background:none; border:none; cursor:none; display:flex; align-items:center; gap:10px; pointer-events:all; opacity:0; animation:fi 1.2s ease .4s forwards; }
+.menu-lbl { font-family:var(--font-body); font-size:12px; font-weight:300; letter-spacing:.1em; color:var(--black); transition:color .3s; }
+.menu-plus { font-size:20px; font-weight:300; color:var(--black); line-height:1; transition:transform .4s, color .3s; }
+.menu-btn.open .menu-plus { transform:rotate(45deg); }
+nav.inv .menu-lbl, nav.inv .menu-plus { color:var(--white); }
+nav.inv .nav-iso img { filter:invert(1); }
+
+/* MENU OVERLAY */
+.overlay { position:fixed; inset:0; background:rgba(8,8,8,0.97); z-index:150; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .4s; }
+.overlay.open { opacity:1; pointer-events:all; }
+.m-links { display:flex; flex-direction:column; gap:0; align-items:center; text-align:center; }
+.m-links a { font-family:var(--font-title); font-size:clamp(20px,2.8vw,36px); font-weight:500; color:var(--white); text-decoration:none; line-height:1.6; opacity:0; transform:translateY(-8px); transition:opacity .38s, transform .38s, color .2s; letter-spacing:.05em; }
+.overlay.open .m-links a { opacity:1; transform:none; }
+.overlay.open .m-links a:nth-child(1) { transition-delay:.06s; }
+.overlay.open .m-links a:nth-child(2) { transition-delay:.12s; }
+.overlay.open .m-links a:nth-child(3) { transition-delay:.18s; }
+.overlay.open .m-links a:nth-child(4) { transition-delay:.24s; }
+.m-links a:hover { color:rgba(255,255,255,.25); }
+.m-foot { position:absolute; bottom:36px; left:60px; right:60px; display:flex; justify-content:space-between; align-items:flex-end; opacity:0; transition:opacity .4s .26s; }
+.overlay.open .m-foot { opacity:1; }
+.m-foot-l { color:#3a3a3a; font-size:12px; line-height:1.9; }
+.m-foot-l a { color:#555; text-decoration:none; display:block; transition:color .2s; }
+.m-foot-l a:hover { color:var(--white); }
+.m-social { display:flex; gap:20px; }
+.m-social a { font-size:11px; font-weight:300; letter-spacing:.1em; color:#3a3a3a; text-decoration:none; transition:color .2s; }
+.m-social a:hover { color:var(--white); }
+
+/* =====================
+   PÁGINAS — sistema de vistas
+   ===================== */
+.page { position:fixed; inset:0; background:var(--white); opacity:0; pointer-events:none; transition:opacity .5s ease; }
+.page.active { opacity:1; pointer-events:all; }
+
+/* =====================
+   LANDING
+   ===================== */
+#landing {
+  background:var(--white);
+  display:flex; align-items:center; justify-content:center;
+}
+.landing-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.landing-ph { position:absolute; inset:0; background:var(--white); display:flex; align-items:center; justify-content:center; }
+.landing-ph span { font-family:var(--font-title); font-size:9px; letter-spacing:.35em; text-transform:uppercase; color:#ddd; }
+
+.l-isotipo-landing {
+  position:absolute;
+  top:24px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:10;
+  width:20px;
+  opacity:0;
+  animation:fi 1.6s ease .3s forwards;
+}
+
+.l-wordmark-wrap {
+  position:absolute;
+  left:18px;
+  bottom:32px;
+  z-index:10;
+  opacity:0;
+  animation:fi 1.6s ease .6s forwards;
+}
+.l-wordmark {
+  display:block;
+  height:37.5vh;
+  width:auto;
+  max-height:375px;
+}
+
+.l-contact { position:absolute; bottom:32px; right:44px; z-index:10; opacity:0; animation:fi 1.6s ease .8s forwards; text-align:left; line-height:1.85; }
+.l-contact a, .l-contact span { display:block; font-family:var(--font-body); font-size:11.5px; font-weight:300; letter-spacing:0.03em; color:var(--black); text-decoration:none; transition:opacity .2s; }
+.l-contact a:hover { opacity:0.45; }
+
+/* =====================
+   CATÁLOGO
+   ===================== */
+#catalogo { background:var(--white); }
+
+/* Mismo branding que landing */
+.cat-isotipo {
+  position:absolute;
+  top:24px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:10;
+  width:20px;
+}
+.cat-wordmark-wrap {
+  position:absolute;
+  left:18px;
+  bottom:32px;
+  z-index:10;
+}
+.cat-wordmark {
+  display:block;
+  height:37.5vh;
+  width:auto;
+  max-height:375px;
+}
+.cat-contact { position:absolute; bottom:32px; right:44px; z-index:10; text-align:left; line-height:1.85; }
+.cat-contact a, .cat-contact span { display:block; font-family:var(--font-body); font-size:11.5px; font-weight:300; letter-spacing:0.03em; color:var(--black); text-decoration:none; transition:opacity .2s; }
+.cat-contact a:hover { opacity:0.45; }
+.cat-section-lbl { position:absolute; top:24px; left:44px; font-family:var(--font-title); font-size:10px; font-weight:600; letter-spacing:.3em; text-transform:uppercase; color:var(--terracota); z-index:10; }
+
+/* Cards flotantes */
+
+
+
+
+
+/* Fila 1 */
+
+
+
+/* Fila 2 */
+
+
+
+
+.pcard img { width:100%; height:100%; object-fit:contain; background:var(--white); display:block; }
+
+/* Overlay: fondo blanco semitransparente, texto a la izquierda-centro */
+
+.pcard:hover 
+
+
+
+
+
+/* =====================
+   PROYECTO INDIVIDUAL
+   ===================== */
+#proyecto { background:var(--white); }
+
+.proj-inner {
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  gap:0;
+  overflow:hidden;
+}
+
+/* Mitad izquierda — info del proyecto */
+.proj-info {
+  width:50%;
+  height:100%;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:80px 6% 80px 12%;
+  background:var(--white);
+}
+.proj-num { font-family:var(--font-title); font-size:10px; font-weight:600; letter-spacing:.35em; color:var(--terracota); margin-bottom:12px; }
+.proj-title { font-family:var(--font-title); font-size:clamp(28px,3.5vw,48px); font-weight:600; color:var(--black); letter-spacing:-.02em; line-height:1; margin-bottom:32px; }
+.proj-ficha { margin-bottom:28px; }
+.proj-ficha-item { margin-bottom:16px; }
+.proj-ficha-label { font-family:var(--font-title); font-size:9px; font-weight:600; letter-spacing:.3em; text-transform:uppercase; color:var(--terracota); margin-bottom:4px; }
+.proj-ficha-val { font-size:14px; color:var(--black); line-height:1.5; }
+.proj-desc { font-size:14px; line-height:1.85; color:#555; max-width:none; text-align:justify; white-space:pre-line;}
+
+/* Mitad derecha — libreta + flechas */
+.proj-libro-wrap {
+  width:50%;
+  height:100%;
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--white);
+}
+.proj-libro {
+  max-height:80vh;
+  max-width:90%;
+  object-fit:contain;
+  display:block;
+  transition:opacity .4s ease;
+}
+
+/* Flechas tipo Apple — minimalistas */
+.proj-arrow {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:none; border:none; cursor:none;
+  padding:16px;
+  opacity:0.3;
+  transition:opacity .2s;
+  z-index:20;
+}
+.proj-arrow:hover { opacity:1; }
+.proj-arrow.prev { left:8px; }
+.proj-arrow.next { right:8px; }
+.proj-arrow svg { display:block; }
+
+/* Volver */
+.proj-back {
+  position:absolute; top:28px; left:44px; z-index:50;
+  display:flex; align-items:center; gap:10px;
+  cursor:none; text-decoration:none;
+  opacity:0.6; transition:opacity .2s;
+}
+.proj-back:hover { opacity:1; }
+.proj-back span { font-family:var(--font-title); font-size:9px; letter-spacing:.25em; text-transform:uppercase; color:var(--black); }
+
+/* =====================
+   CONTACTO — fondo blanco, estilo landing
+   ===================== */
+#contacto {
+  background: var(--white);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header superior: ubicación / email / redes */
+.ct-top {
+  position: absolute;
+  bottom: 28px;
+  left: 0; right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  padding: 0 90px;
+  z-index: 10;
+}
+.ct-loc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--black);
+  letter-spacing: .02em;
+}
+.ct-email {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--black);
+  text-decoration: none;
+  letter-spacing: .02em;
+  transition: opacity .2s;
+}
+.ct-email:hover { opacity: .5; }
+.ct-social {
+  display: flex;
+  gap: 18px;
+}
+.ct-social a {
+  color: var(--black);
+  display: flex;
+  transition: opacity .2s;
+}
+.ct-social a:hover { opacity: .5; }
+
+/* Formulario centrado */
+.ct-form-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 60px 90px;
+}
+.ct-form {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.ct-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+.ff { display:flex; flex-direction:column; gap:8px; }
+.ff label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 300;
+  color: #333;
+}
+.ff input, .ff textarea {
+  background: transparent;
+  border: 1px solid #d8d6d0;
+  padding: 10px 12px;
+  color: var(--black);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 300;
+  outline: none;
+  transition: border-color .2s;
+  resize: none;
+}
+.ff input:focus, .ff textarea:focus { border-color: var(--terracota); }
+.ff textarea { min-height: 110px; }
+.ct-send {
+  align-self: flex-end;
+  background: none;
+  border: 1px solid #d8d6d0;
+  color: var(--black);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 300;
+  padding: 10px 36px;
+  cursor: none;
+  transition: all .25s;
+}
+.ct-send:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+
+@media (max-width: 768px) {
+  .ct-form-row { grid-template-columns: 1fr; }
+  .ct-form-wrap { padding: 100px 40px 140px 56px; }
+  .ct-top {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 0 32px;
+    bottom: 56px;
+    text-align: center;
+  }
+  .ct-loc, .ct-email { font-size: 12px; }
+}
+
+@keyframes fi { from{ opacity:0; } to{ opacity:1; } }
+
+/* ─── CATÁLOGO scroll horizontal ─── */
+#catalogo { background:#ffffff; }
+
+/* Rail de cards — scroll horizontal, fijo en el centro vertical */
+.cat-rail-wrap {
+  position:absolute;
+  /* Área central — entre isotipo (top~70px) y branding (bottom~120px) */
+  top:80px;
+  bottom:110px;
+  left:0;
+  right:0;
+  display:flex;
+  align-items:center;
+  overflow:hidden;   /* el scroll lo maneja el rail interno */
+}
+
+.cat-rail {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  gap:6vw;
+  padding:0 25vw;
+  height:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-behavior:smooth;
+  scrollbar-width:none;       /* Firefox */
+  -ms-overflow-style:none;    /* IE */
+  cursor:grab;
+}
+.cat-rail::-webkit-scrollbar { display:none; }
+.cat-rail:active { cursor:grabbing; }
+
+/* Cada "nube" = par de cards en columna */
+.cat-pair {
+  display:flex;
+  flex-direction:column;
+  gap:3vh;
+  flex-shrink:0;
+}
+
+/* Card individual */
+.hcard {
+  position:relative;
+  display:block;
+  text-decoration:none;
+  cursor:none;
+  overflow:hidden;
+  width:50vw;
+  height:62vh;
+  background:#ffffff;
+  flex-shrink:0;
+  transition:transform .4s ease;
+}
+.hcard:hover { transform:scale(1.015); }
+
+.hcard img {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:#ffffff;
+  z-index:1;
+}
+
+.hcard-ov {
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.92);
+  opacity:0;
+  transition:opacity .3s ease;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:2;
+}
+.hcard:hover .hcard-ov { opacity:1; }
+
+.hcard-num {
+  font-family:"Montserrat",sans-serif;
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.35em;
+  color:#b5572a;
+  margin-bottom:5px;
+  text-align:center;
+}
+.hcard-nom {
+  font-family:"Montserrat",sans-serif;
+  font-size:clamp(13px,1.5vw,20px);
+  font-weight:600;
+  color:#0a0a0a;
+  line-height:1.1;
+  margin-bottom:4px;
+  text-align:center;
+}
+.hcard-met {
+  font-size:10px;
+  color:#888;
+  letter-spacing:.07em;
+  text-align:center;
+}
+
+/* Indicador de scroll — flecha discreta derecha */
+.cat-scroll-hint {
+  position:absolute;
+  right:20px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:30;
+  opacity:0.35;
+  pointer-events:all;  /* clickeable */
+  cursor:none;
+  padding:12px;
+  background:none;
+  border:none;
+  animation:hintPulse 2s ease-in-out infinite;
+}
+.cat-scroll-hint:hover {
+  opacity:0.9;
+  animation:none;
+}
+.cat-scroll-prev {
+  position:absolute;
+  left:20px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:30;
+  opacity:0.2;
+  pointer-events:all;
+  cursor:none;
+  padding:12px;
+  background:none;
+  border:none;
+  transition:opacity .2s;
+}
+.cat-scroll-prev:hover { opacity:0.9; }
+
+@keyframes hintPulse {
+  0%,100% { opacity:0.15; transform:translateY(-50%) translateX(0); }
+  50%      { opacity:0.4;  transform:translateY(-50%) translateX(4px); }
+}
+
+
+/* =============================================
+   PROYECTO INDIVIDUAL
+   ============================================= */
+#proyecto {
+  background:#ffffff;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Contenedor general con márgenes tipo "marco" */
+.proj-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 4px 4px 80px 4px;
+  box-sizing: border-box;
+}
+
+/* ── HERO ── */
+.proj-hero {
+  width: 100%;
+  height: 72vh;
+  margin-bottom: 3px;
+  position: relative;
+  overflow: hidden;
+  background: #e8e8e8;
+  z-index: 1;
+}
+.proj-hero video,
+.proj-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.proj-hero-ph {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,#e2e1db,#d4d3cd);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.proj-hero-ph span {
+  font-family: "Montserrat",sans-serif;
+  font-size: 10px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: #bbb;
+}
+
+/* ── FICHA TÉCNICA ── debajo del hero */
+
+.proj-ficha-wrap {
+  padding: 6% 6%;
+}
+.proj-ficha-inner {
+  width: 100%;
+  max-width: 50%;
+}
+@media (max-width: 768px) {
+  .proj-ficha-inner { max-width: 100%; }
+  .proj-ficha-wrap { padding: 0 24px; }
+}
+.proj-ficha-title {
+  font-family: var(--font-title);
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 500;
+  letter-spacing: .02em;
+  margin-bottom: 24px;
+}
+
+.proj-ficha {
+  width: 100%;
+  padding: 28px 0 32px;
+  display: grid;
+  grid-template-columns: auto auto auto auto 1fr;
+  gap: 0 32px;
+  align-items: start;
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 3px;
+}
+.proj-ficha-item {}
+.proj-ficha-label {
+  font-family: "Montserrat",sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: #b5572a;
+  margin-bottom: 5px;
+}
+.proj-ficha-val {
+  font-family: "Lato",sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: #0a0a0a;
+  line-height: 1.4;
+}
+.proj-desc-col {
+  font-family: "Lato",sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: #555;
+  line-height: 1.8;
+  max-width: 480px;
+  align-self: center;
+}
+
+/* ── GALERÍA ── fotos con pequeño gap y margen = mismo "marco" */
+.proj-galeria {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* Foto individual */
+.proj-foto {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: #f0efeb;
+}
+.proj-foto img,
+.proj-foto video {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: none;
+}
+/* Proporciones fijas según orientación detectada */
+/* aspect-ratio se asigna dinámicamente vía JS según cada imagen */
+.proj-foto-ph {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg,#ebebeb,#ddd);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.proj-foto-ph span {
+  font-family: "Montserrat",sans-serif;
+  font-size: 9px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: #ccc;
+}
+
+/* Foto grande horizontal */
+.proj-foto.size-full { aspect-ratio: 16/7; }
+.proj-foto-single {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: #f0efeb;
+}
+.proj-foto-single img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* Par de fotos lado a lado */
+.proj-foto-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  align-items: start;
+}
+/* aspect-ratio asignado por JS */
+/* Foto vertical */
+.proj-foto.size-vert { aspect-ratio: 3/4; }
+/* Foto cuadrada */
+.proj-foto.size-sq { aspect-ratio: 1/1; }
+
+/* ── PLANTA con flechas de nivel ── */
+
+
+
+
+/* Flechas de nivel dentro de la planta */
+.planta-nav {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.planta-nav button {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid #ddd;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: none;
+  transition: all .2s;
+}
+.planta-nav button:hover { background: #0a0a0a; border-color: #0a0a0a; }
+.planta-nav button:hover svg line,
+.planta-nav button:hover svg polyline { stroke: #fff; }
+
+
+/* ── NAVEGACIÓN entre proyectos ── */
+.proj-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: none;
+  background: none;
+  border: none;
+  padding: 12px 8px;
+  opacity: 0.25;
+  transition: opacity .2s;
+}
+.proj-nav:hover { opacity: 1; }
+.proj-nav.prev { left: 0; }
+.proj-nav.next { right: 0; }
+.proj-nav span {
+  font-family: "Montserrat",sans-serif;
+  font-size: 8px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  writing-mode: vertical-rl;
+}
+
+/* ── HEADER fijo dentro del proyecto ── */
+.proj-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  padding: 20px 0 16px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+.proj-header-num {
+  font-family: "Montserrat",sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .35em;
+  color: #b5572a;
+}
+.proj-header-title {
+  font-family: "Montserrat",sans-serif;
+  font-size: clamp(14px,2vw,22px);
+  font-weight: 600;
+  color: #0a0a0a;
+  letter-spacing: -.01em;
+}
+.proj-header-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: none;
+  opacity: 0.4;
+  transition: opacity .2s;
+  font-family: "Montserrat",sans-serif;
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+}
+.proj-header-back:hover { opacity: 1; }
+
+
+/* LIGHTBOX — visor de fotos a pantalla completa */
+.lightbox {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(255,255,255,0.97);
+  display: none;
+  align-items: center; justify-content: center;
+  cursor: none;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 90vw; max-height: 90vh;
+  object-fit: contain;
+  display: block;
+}
+.lightbox-close {
+  position: absolute; top: 24px; right: 28px;
+  background: none; border: none; cursor: none;
+  z-index: 10; opacity: 0.5; transition: opacity .2s;
+}
+.lightbox-close:hover { opacity: 1; }
+.lightbox-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: none;
+  padding: 16px; opacity: 0.3; transition: opacity .2s;
+  z-index: 10;
+}
+.lightbox-nav:hover { opacity: 1; }
+.lightbox-nav.prev { left: 12px; }
+.lightbox-nav.next { right: 12px; }
+.lightbox-counter {
+  position: absolute; bottom: 24px; left: 50%;
+  transform: translateX(-50%);
+  font-family:"Montserrat",sans-serif;
+  font-size: 10px; letter-spacing: .25em;
+  color: #999;
+}
+
+
+/* =====================
+   PRESS — estilo periódico, centrado
+   ===================== */
+#press {
+  background: var(--white);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+.pr-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 90px 90px;
+}
+.pr-list {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+}
+.pr-item {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 26px 0;
+  border-top: 1px solid #e5e3dd;
+  text-decoration: none;
+  color: var(--black);
+  transition: opacity .2s;
+  text-align: center;
+  justify-content: center;
+}
+.pr-item:last-child { border-bottom: 1px solid #e5e3dd; }
+.pr-item:hover { opacity: .5; }
+.pr-bullet {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--terracota);
+  flex: none;
+  align-self: center;
+}
+.pr-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pr-title {
+  font-family: var(--font-title);
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 500;
+  letter-spacing: .01em;
+}
+.pr-meta {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #999;
+}
+
+@media (max-width: 768px) {
+  .pr-wrap { padding: 100px 24px 90px; }
+  .pr-item { gap: 12px; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cr"></div>
+<div class="cursor-ring" id="crr"></div>
+
+<!-- NAV FIJO -->
+<nav id="nav">
+  <button class="menu-btn" id="mb" onclick="toggleMenu()">
+    <span class="menu-lbl">Menu</span>
+    <span class="menu-plus">+</span>
+  </button>
+</nav>
+
+<!-- MENU OVERLAY -->
+<div class="overlay" id="ov">
+  <div class="m-links">
+    <a href="#" onclick="goTo('catalogo')">Proyectos</a>
+    <a href="#" onclick="goTo('taller')">Taller</a>
+    <a href="#" onclick="goTo('contacto')">Contacto</a>
+    <a href="#" onclick="goTo('press')">Press</a>
+  </div>
+  <div class="m-foot">
+    <div class="m-foot-l">
+      <span style="display:block;margin-bottom:3px">Morelia, México</span>
+      <a href="mailto:tallerpedrovaldes@gmail.com">tallerpedrovaldes@gmail.com</a>
+      <a href="#">+52 443 3960571</a>
+    </div>
+    <div class="m-social">
+      <a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LANDING ===== -->
+<div class="page active" id="landing">
+  <!-- <video class="landing-video" autoplay muted loop playsinline src="collage.mp4"></video> -->
+  <div class="landing-ph"><span>Video collage — loop</span></div>
+  <a href="#" onclick="goTo('landing'); return false;" style="position:absolute;top:24px;left:50%;transform:translateX(-50%);z-index:10;display:block;cursor:none;"><img src="/images/assets/isotipo.png" style="width:20px;display:block;" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'"></a>
+  <div class="l-wordmark-wrap">
+    <img class="l-wordmark" src="/images/assets/wordmark.png" alt="pedro valdés arquitectos">
+  </div>
+  <div class="l-contact">
+    <span>+52 443 3960571</span>
+    <a href="mailto:tallerpedrovaldes@gmail.com">tallerpedrovaldes@gmail.com</a>
+    <a href="https://www.pevarq.com">www.pevarq.com</a>
+    <a href="https://instagram.com/pevarq" style="display:flex;align-items:center;gap:5px;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      /pevarq
+    </a>
+  </div>
+</div>
+
+  <!-- ===== CATÁLOGO ===== -->
+<div class="page" id="catalogo">
+
+  <!-- Branding fijo — NO se mueve -->
+  <div class="cat-wordmark-wrap">
+    <img class="cat-wordmark" src="" id="catWordmark">
+  </div>
+  <div class="cat-contact">
+    <span>+52 443 3960571</span>
+    <a href="mailto:tallerpedrovaldes@gmail.com">tallerpedrovaldes@gmail.com</a>
+    <a href="https://www.pevarq.com">www.pevarq.com</a>
+    <a href="https://instagram.com/pevarq" style="display:flex;align-items:center;gap:5px;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      /pevarq
+    </a>
+  </div>
+  <span class="cat-section-lbl">Proyectos</span>
+  <a href="#" onclick="goTo('landing'); return false;" style="position:absolute;top:24px;left:50%;transform:translateX(-50%);z-index:10;display:block;cursor:none;" id="catIsotipo">
+    <img src="" id="catIsotipoImg" style="width:20px;display:block;">
+  </a>
+
+  <!-- RAIL de scroll horizontal -->
+  <div class="cat-rail-wrap">
+    <div class="cat-rail" id="catRail">
+      <a class="hcard" href="#" onclick="openProyecto(3); return false;">
+          <img src="/images/proyectos/04-casa-rd/catalogo.png">
+          <div class="hcard-ov">
+            <div class="hcard-num">04</div>
+            <div class="hcard-nom">Casa RD</div>
+            <div class="hcard-met">Morelia, Michoacán — 2025</div>
+          </div>
+        </a>
+
+      <a class="hcard" href="#" onclick="openProyecto(2); return false;">
+          <img src="/images/proyectos/03-villa-kai-kai/catalogo.jpg">
+          <div class="hcard-ov">
+            <div class="hcard-num">03</div>
+            <div class="hcard-nom">Villa Kai-Kai</div>
+            <div class="hcard-met">Ixtapa, Guerrero — 2023</div>
+          </div>
+        </a>
+
+      <a class="hcard" href="#" onclick="openProyecto(1); return false;">
+          <img src="/images/proyectos/02-casa-navarro/catalogo.jpg">
+          <div class="hcard-ov">
+            <div class="hcard-num">02</div>
+            <div class="hcard-nom">Casa Navarro</div>
+            <div class="hcard-met">Zapotlanejo, Jalisco — 2021</div>
+          </div>
+        </a>
+
+      <a class="hcard" href="#" onclick="openProyecto(0); return false;">
+          <img src="/images/proyectos/01-casa-arreygue/catalogo.jpg">
+          <div class="hcard-ov">
+            <div class="hcard-num">01</div>
+            <div class="hcard-nom">Casa Arreygue</div>
+            <div class="hcard-met">Morelia, Michoacán — 2021</div>
+          </div>
+        </a>
+
+    </div>
+  </div>
+
+  <!-- Flecha siguiente — fuera del área de cards -->
+  <button class="cat-scroll-hint" onclick="scrollCatNext()" title="Siguiente">
+    <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+      <polyline points="1,1 9,9 1,17" stroke="#0a0a0a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- Flecha anterior -->
+  <button class="cat-scroll-prev" onclick="scrollCatPrev()" title="Anterior">
+    <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+      <polyline points="9,1 1,9 9,17" stroke="#0a0a0a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+</div>
+
+      <!-- ===== PROYECTO INDIVIDUAL ===== -->
+<div class="page" id="proyecto" style="overflow-y:auto;">
+
+  <!-- Isotipo — igual que landing y catálogo -->
+  <a href="#" onclick="goTo('landing'); return false;"
+     style="position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:200;display:block;cursor:none;">
+    <img src="/images/assets/isotipo.png" style="width:20px;display:block;"
+         onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'">
+  </a>
+
+  <!-- Flechas navegación proyectos -->
+  <button class="proj-nav prev" onclick="prevProyecto()">
+    <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+      <polyline points="9,1 1,9 9,17" stroke="#0a0a0a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <button class="proj-nav next" onclick="nextProyecto()">
+    <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+      <polyline points="1,1 9,9 1,17" stroke="#0a0a0a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <div class="proj-page">
+    <!-- HERO -->
+    <div class="proj-hero" id="pHero"></div>
+
+    <!-- FICHA + PLANTAS lado a lado -->
+    <div class="proj-ficha-wrap">
+      <div class="proj-ficha-inner">
+        <div class="proj-ficha-title" id="pFichaTitle">—</div>
+        <div class="proj-ficha-grid">
+          <div class="proj-ficha-item">
+            <div class="proj-ficha-label">Ubicación</div>
+            <div class="proj-ficha-val" id="pUbicacion">—</div>
+          </div>
+          <div class="proj-ficha-item">
+            <div class="proj-ficha-label">Año</div>
+            <div class="proj-ficha-val" id="pAnio">—</div>
+          </div>
+          <div class="proj-ficha-item">
+            <div class="proj-ficha-label">Tipo</div>
+            <div class="proj-ficha-val" id="pTipo">—</div>
+          </div>
+          <div class="proj-ficha-item">
+            <div class="proj-ficha-label">Colaboradores</div>
+            <div class="proj-ficha-val" id="pColaboradores">—</div>
+          </div>
+          <div class="proj-ficha-item">
+            <div class="proj-ficha-label">Área de construcción</div>
+            <div class="proj-ficha-val" id="pArea">—</div>
+          </div>
+        </div>
+        <div class="proj-desc" id="pDesc">—</div>
+      </div>
+
+    </div>
+
+    <!-- IMÁGENES -->
+    <div class="proj-galeria" id="pGaleria"></div><!-- fin imagenes -->
+
+  </div><!-- fin proj-page -->
+</div>
+
+  <!-- ===== CONTACTO ===== -->
+<div class="page" id="contacto">
+
+  <!-- Isotipo centrado — link al landing -->
+  <a href="#" onclick="goTo('landing'); return false;"
+     style="position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:200;display:block;cursor:none;">
+    <img src="/images/assets/isotipo.png" style="width:20px;display:block;"
+         onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'">
+  </a>
+
+  <!-- Wordmark vertical — igual que landing -->
+  <div class="l-wordmark-wrap">
+    <img class="l-wordmark" src="/images/assets/wordmark.png" alt="pedro valdés arquitectos">
+  </div>
+
+  <!-- Header inferior: email / redes -->
+  <div class="ct-top">
+    <a href="mailto:tallerpedrovaldes@gmail.com" class="ct-email">tallerpedrovaldes@gmail.com</a>
+    <div class="ct-social">
+      <a href="https://instagram.com/pevarq" title="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="#" title="Facebook">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="#" title="YouTube">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><polygon points="10,9 15,12 10,15" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Formulario centrado -->
+  <div class="ct-form-wrap">
+    <form class="ct-form">
+      <div class="ct-form-row">
+        <div class="ff"><label>Nombre</label><input type="text" name="nombre"></div>
+        <div class="ff"><label>Apellido</label><input type="text" name="apellido"></div>
+        <div class="ff"><label>Email *</label><input type="email" name="email" required></div>
+      </div>
+      <div class="ff"><label>Mensaje</label><textarea name="mensaje"></textarea></div>
+      <button type="submit" class="ct-send">Enviar</button>
+    </form>
+  </div>
+
+</div>
+
+<!-- ===== PRESS ===== -->
+<div class="page" id="press">
+
+  <!-- Isotipo centrado — link al landing -->
+  <a href="#" onclick="goTo('landing'); return false;"
+     style="position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:200;display:block;cursor:none;">
+    <img src="/images/assets/isotipo.png" style="width:20px;display:block;"
+         onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'">
+  </a>
+
+  <!-- Wordmark vertical -->
+  <div class="l-wordmark-wrap">
+    <img class="l-wordmark" src="/images/assets/wordmark.png" alt="pedro valdés arquitectos">
+  </div>
+
+  <div class="pr-wrap">
+    <div class="pr-list" id="prList"></div>
+  </div>
+
+</div>
+
+<!-- ===== TALLER ===== -->
+<div class="page" id="taller">
+
+  <!-- Isotipo centrado — link al landing -->
+  <a href="#" onclick="goTo('landing'); return false;"
+     style="position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:200;display:block;cursor:none;">
+    <img src="/images/assets/isotipo.png" style="width:20px;display:block;"
+         onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'">
+  </a>
+
+  <!-- Wordmark vertical — igual que landing -->
+  <div class="l-wordmark-wrap">
+    <img class="l-wordmark" src="/images/assets/wordmark.png" alt="pedro valdés arquitectos">
+  </div>
+
+  <!-- Header inferior: redes -->
+  <div class="ct-top" style="justify-content:flex-end;">
+    <div class="ct-social">
+      <a href="https://instagram.com/pevarq" title="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="#" title="Facebook">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="#" title="YouTube">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><polygon points="10,9 15,12 10,15" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Texto del taller -->
+  <div class="tl-wrap">
+    <div class="tl-content">
+      <div class="tl-brand">pevarq</div>
+      <div class="tl-cols">
+        <p class="tl-text">Entendemos la arquitectura como un proceso de aprendizaje continuo donde el diseño surge del diálogo entre el lugar, el cliente y el taller. Trabajamos desde la convicción de que las mejores ideas no aparecen de manera aislada, sino que se construyen sobre la experiencia, la colaboración y el conocimiento acumulado a través del tiempo.</p>
+        <p class="tl-text">Pedro Valdés Sánchez es arquitecto egresado del ITESO en Guadalajara, con estudios en Alemania y España. Su práctica abarca proyectos de diseño, construcción y visualización arquitectónica. Además de su pasión por el oficio, encuentra inspiración en correr por una ciudad al amanecer, pasar una tarde en un jardín o simplemente observar cómo transcurre la vida cotidiana.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Datos de proyectos
+let PROYECTOS = [];
+
+async function loadProyectosData() {
+  const slugs = ['01-casa-arreygue','02-casa-navarro','03-villa-kai-kai','04-casa-rd'];
+  const data = await Promise.all(slugs.map(s => fetch(`/content/proyectos/${s}.json`).then(r => r.json())));
+  PROYECTOS = data;
+  return PROYECTOS;
+}
+
+// Cursor
+const cr=document.getElementById('cr'), crr=document.getElementById('crr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function a(){
+  cr.style.transform=`translate(${mx-4}px,${my-4}px)`;
+  rx+=(mx-rx-15)*.1; ry+=(my-ry-15)*.1;
+  crr.style.transform=`translate(${rx}px,${ry}px)`;
+  requestAnimationFrame(a);
+})();
+document.querySelectorAll('a,button,.pcard').forEach(e=>{
+  e.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
+  e.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
+});
+
+// Navegación
+let currentPage = 'landing';
+let currentProyecto = 0;
+
+function goTo(page) {
+  // Sincronizar logos del catálogo con los del landing
+  const lw = document.querySelector('.l-wordmark');
+  const li = document.querySelector('a[onclick*="landing"] img');
+  if(lw) {
+    const cw = document.getElementById('catWordmark');
+    if(cw) cw.src = lw.src;
+  }
+  if(li) {
+    const ci = document.getElementById('catIsotipoImg');
+    if(ci) ci.src = li.src;
+  }
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(page).classList.add('active');
+  currentPage = page;
+  // Nav siempre normal — todas las páginas tienen fondo blanco
+  document.getElementById('nav').classList.remove('inv');
+  // Cerrar menú si está abierto
+  const ov = document.getElementById('ov');
+  if(ov.classList.contains('open')) toggleMenu();
+  if(page === 'press') loadPress();
+}
+
+function toggleMenu() {
+  document.getElementById('mb').classList.toggle('open');
+  document.getElementById('ov').classList.toggle('open');
+}
+
+// Abrir proyecto
+async function openProyecto(idx) {
+  currentProyecto = idx;
+  if(!PROYECTOS.length) await loadProyectosData();
+  loadProyecto(idx);
+  goTo('proyecto');
+}
+
+function mediaTag(src, alt) {
+  const isVideo = /\.(mp4|webm|mov)$/i.test(src);
+  return isVideo
+    ? `<video src="${src}" autoplay muted loop playsinline></video>`
+    : `<img src="${src}" alt="${alt}">`;
+}
+
+function loadProyecto(idx) {
+  const p = PROYECTOS[idx];
+  if(!p) return;
+  const set = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
+  set('pFichaTitle', p.nombre);
+  set('pUbicacion', p.ubicacion);
+  set('pAnio', p.anio);
+  set('pTipo', p.tipo);
+  set('pColaboradores', p.colaboradores || '—');
+  set('pArea', p.area || '—');
+  set('pDesc', p.desc);
+
+  // HERO + GALERÍA dinámicos
+  const imgs = p.imagenes || [];
+  const heroEl = document.getElementById('pHero');
+  const galEl = document.getElementById('pGaleria');
+
+  if(heroEl) {
+    heroEl.innerHTML = imgs.length
+      ? mediaTag(imgs[0], p.nombre)
+      : '<div class="proj-hero-ph"><span>Foto / Video principal</span></div>';
+  }
+
+  if(galEl) {
+    const rest = imgs.slice(1);
+    let out = '';
+    let i = 0, big = false; // empezar con un par de fotos
+    while(i < rest.length) {
+      if(big) {
+        out += `<div class="proj-foto-single">${mediaTag(rest[i], p.nombre)}</div>
+`;
+        i += 1;
+      } else {
+        if(i+1 < rest.length) {
+          out += `<div class="proj-foto-pair"><div class="proj-foto">${mediaTag(rest[i], p.nombre)}</div><div class="proj-foto">${mediaTag(rest[i+1], p.nombre)}</div></div>
+`;
+          i += 2;
+        } else {
+          out += `<div class="proj-foto-single">${mediaTag(rest[i], p.nombre)}</div>
+`;
+          i += 1;
+        }
+      }
+      big = !big;
+    }
+    galEl.innerHTML = out;
+  }
+
+  const proj = document.getElementById('proyecto');
+  if(proj) proj.scrollTop = 0;
+  setTimeout(adjustFotoAspect, 50);
+  setTimeout(bindLightboxClicks, 50);
+}
+
+function scrollCatNext() {
+  const rail = document.getElementById('catRail');
+  if(!rail) return;
+  const card = rail.querySelector('.hcard');
+  const gap = parseFloat(getComputedStyle(rail).gap) || 80;
+  const step = card ? card.offsetWidth + gap : window.innerWidth * 0.56;
+  rail.scrollBy({ left: step, behavior: 'smooth' });
+}
+function scrollCatPrev() {
+  const rail = document.getElementById('catRail');
+  if(!rail) return;
+  const card = rail.querySelector('.hcard');
+  const gap = parseFloat(getComputedStyle(rail).gap) || 80;
+  const step = card ? card.offsetWidth + gap : window.innerWidth * 0.56;
+  rail.scrollBy({ left: -step, behavior: 'smooth' });
+}
+
+// Rueda del ratón → scroll horizontal en el catálogo
+(function(){
+  const wrap = document.querySelector('.cat-rail-wrap');
+  if(!wrap) return;
+  wrap.addEventListener('wheel', function(e) {
+    const rail = document.getElementById('catRail');
+    if(!rail) return;
+    e.preventDefault();
+    rail.scrollBy({ left: e.deltaY * 2.5, behavior: 'smooth' });
+  }, { passive: false });
+})();
+
+
+// Nivel actual de planta
+let currentNivel = 0;
+
+function loadProyecto(idx) {
+  const p = PROYECTOS[idx];
+  if(!p) return;
+  const set = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
+  set('pFichaTitle', p.nombre);
+  set('pUbicacion', p.ubicacion);
+  set('pAnio', p.anio);
+  set('pTipo', p.tipo);
+  set('pColaboradores', p.colaboradores || '—');
+  set('pArea', p.area || '—');
+  set('pDesc', p.desc);
+
+  // HERO + GALERÍA dinámicos
+  const imgs = p.imagenes || [];
+  const heroEl = document.getElementById('pHero');
+  const galEl = document.getElementById('pGaleria');
+
+  if(heroEl) {
+    heroEl.innerHTML = imgs.length
+      ? mediaTag(imgs[0], p.nombre)
+      : '<div class="proj-hero-ph"><span>Foto / Video principal</span></div>';
+  }
+
+  if(galEl) {
+    const rest = imgs.slice(1);
+    let out = '';
+    let i = 0, big = false; // empezar con un par de fotos
+    while(i < rest.length) {
+      if(big) {
+        out += `<div class="proj-foto-single">${mediaTag(rest[i], p.nombre)}</div>
+`;
+        i += 1;
+      } else {
+        if(i+1 < rest.length) {
+          out += `<div class="proj-foto-pair"><div class="proj-foto">${mediaTag(rest[i], p.nombre)}</div><div class="proj-foto">${mediaTag(rest[i+1], p.nombre)}</div></div>
+`;
+          i += 2;
+        } else {
+          out += `<div class="proj-foto-single">${mediaTag(rest[i], p.nombre)}</div>
+`;
+          i += 1;
+        }
+      }
+      big = !big;
+    }
+    galEl.innerHTML = out;
+  }
+
+  const proj = document.getElementById('proyecto');
+  if(proj) proj.scrollTop = 0;
+  setTimeout(adjustFotoAspect, 50);
+  setTimeout(bindLightboxClicks, 50);
+}
+
+
+function prevProyecto() {
+  // Orden del catálogo: RD(idx4→pos0), KaiKai(idx2→pos1), Navarro(idx1→pos2), Arreygue(idx0→pos3)
+  const catOrder = [3, 2, 1, 0]; // índices en PROYECTOS según orden catálogo
+  const pos = catOrder.indexOf(currentProyecto);
+  const prevPos = (pos - 1 + catOrder.length) % catOrder.length;
+  currentProyecto = catOrder[prevPos];
+  loadProyecto(currentProyecto);
+}
+
+function nextProyecto() {
+  const catOrder = [3, 2, 1, 0];
+  const pos = catOrder.indexOf(currentProyecto);
+  const nextPos = (pos + 1) % catOrder.length;
+  currentProyecto = catOrder[nextPos];
+  loadProyecto(currentProyecto);
+}
+
+function prevNivel() {
+  // Se implementará cuando haya plantas de múltiples niveles
+}
+function nextNivel() {
+  // Se implementará cuando haya plantas de múltiples niveles
+}
+
+
+
+
+
+// Detectar orientación de cada imagen y ajustar su contenedor
+function adjustFotoAspect() {
+  // Las imágenes usan height:auto, mantienen su proporción natural sin recortes.
+  document.querySelectorAll('.proj-foto img').forEach(img => {
+    const wrap = img.closest('.proj-foto');
+    if(wrap) wrap.style.aspectRatio = '';
+  });
+}
+
+
+// LIGHTBOX
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+function collectGalleryImages() {
+  lightboxImages = Array.from(document.querySelectorAll('#proyecto .proj-galeria img, #proyecto .proj-hero img')).map(img => img.src);
+}
+
+function openLightbox(imgEl) {
+  collectGalleryImages();
+  const src = imgEl.src;
+  lightboxIndex = lightboxImages.indexOf(src);
+  if(lightboxIndex < 0) lightboxIndex = 0;
+  showLightboxImage();
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function showLightboxImage() {
+  const img = document.getElementById('lightboxImg');
+  img.src = lightboxImages[lightboxIndex];
+  document.getElementById('lightboxCounter').textContent =
+    (lightboxIndex+1) + ' / ' + lightboxImages.length;
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+function lightboxNext(e) {
+  if(e) e.stopPropagation();
+  lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
+  showLightboxImage();
+}
+function lightboxPrev(e) {
+  if(e) e.stopPropagation();
+  lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+  showLightboxImage();
+}
+
+// Teclado: flechas y escape
+document.addEventListener('keydown', e => {
+  if(!document.getElementById('lightbox').classList.contains('open')) return;
+  if(e.key === 'ArrowRight') lightboxNext();
+  if(e.key === 'ArrowLeft') lightboxPrev();
+  if(e.key === 'Escape') closeLightbox();
+});
+
+// Click en imágenes de galería/hero abre el lightbox
+function bindLightboxClicks() {
+  document.querySelectorAll('#proyecto .proj-galeria img, #proyecto .proj-hero img').forEach(img => {
+    img.onclick = () => openLightbox(img);
+  });
+}
+
+
+// PRESS — lista de publicaciones
+const PRESS = [
+  {
+    titulo: "Navarro House",
+    fuente: "ArchDaily",
+    url: "https://www.archdaily.com/987382/navarro-house-mrv-taller"
+  },
+  {
+    titulo: "Casa Navarro",
+    fuente: "Dwell",
+    url: "https://www.dwell.com/article/casa-navarro-mrv-taller-mexico-courtyard-home-cf6589e8"
+  },
+  {
+    titulo: "Casa Navarro",
+    fuente: "México Design",
+    url: "https://mexicodesign.com/casa-navarro-mrv-taller/"
+  }
+];
+
+function loadPress() {
+  const list = document.getElementById('prList');
+  if(!list) return;
+  list.innerHTML = PRESS.map(p => `
+    <a class="pr-item" href="${p.url}" target="_blank" rel="noopener">
+      <span class="pr-bullet"></span>
+      <div class="pr-info">
+        <div class="pr-title">${p.titulo}</div>
+        <div class="pr-meta">${p.fuente}</div>
+      </div>
+    </a>
+  `).join('');
+}
+
+loadProyectosData();
+</script>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this) closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">
+    <svg width="20" height="20" viewBox="0 0 20 20"><line x1="2" y1="2" x2="18" y2="18" stroke="#0a0a0a" stroke-width="1"/><line x1="18" y1="2" x2="2" y2="18" stroke="#0a0a0a" stroke-width="1"/></svg>
+  </button>
+  <button class="lightbox-nav prev" onclick="lightboxPrev(event)">
+    <svg width="12" height="20" viewBox="0 0 12 20" fill="none"><polyline points="10,1 1,10 10,19" stroke="#0a0a0a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav next" onclick="lightboxNext(event)">
+    <svg width="12" height="20" viewBox="0 0 12 20" fill="none"><polyline points="2,1 11,10 2,19" stroke="#0a0a0a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+</body>
+</html>
