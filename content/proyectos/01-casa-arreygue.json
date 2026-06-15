@@ -1,0 +1,22 @@
+{
+  "num": "01",
+  "nombre": "Casa Arreygue",
+  "ubicacion": "Morelia, Michoacán",
+  "anio": "2021",
+  "tipo": "Residencial",
+  "desc": "Casa Arreygue se concibió para alguien que ya conoce el peso de los años: un lugar pensado para el descanso, sin escaleras que recorrer todos los días. En planta baja conviven el área social y la recámara principal; arriba, dos habitaciones esperan, casi en silencio, la llegada ocasional de la familia. La piedra laja, recuperada de un terreno del cliente en las afueras de la ciudad, encuentra aquí un nuevo lugar. Cada espacio se abre hacia patios, jardines y vistas cenitales, y se cierra, con cuidado, a la calle y a los vecinos.",
+  "planta": "/images/proyectos/01-casa-arreygue/portada.jpg",
+  "colaboradores": "Myriam Sánchez",
+  "area": "—",
+  "imagenes": [
+    "/images/proyectos/01-casa-arreygue/01.jpg",
+    "/images/proyectos/01-casa-arreygue/02.jpg",
+    "https://drive.google.com/uc?export=view&id=1iGyLeFHm0cZv85CFLFvidefZBopFjMcK",
+    "https://drive.google.com/uc?export=view&id=1MutSNOEFC_wlRpTi4ts20Jhs-SZd8A5J",
+    "https://drive.google.com/uc?export=view&id=1rviQMTUfpExx192hfEM8Jk_opm8ZXNcV",
+    "https://drive.google.com/uc?export=view&id=1hkmhO51J5kjNjlqXvn8NCZB1f92JROIq",
+    "https://drive.google.com/uc?export=view&id=1nXQhGEquPx1PAq6qO8CvfFao43BcPNIX",
+    "https://drive.google.com/uc?export=view&id=1OH0lWlyDP36RhN2b2U0DK1ghC-FApt4C",
+    "https://drive.google.com/uc?export=view&id=1Z1yzQOYAjyOI_bKSsxlY5ZR1189Y07gF"
+  ]
+}

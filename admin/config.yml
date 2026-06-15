@@ -1,0 +1,49 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "site/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "proyectos"
+    label: "Proyectos"
+    folder: "site/content/proyectos"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    identifier_field: "nombre"
+    fields:
+      - { label: "Número", name: "num", widget: "string" }
+      - { label: "Nombre", name: "nombre", widget: "string" }
+      - { label: "Ubicación", name: "ubicacion", widget: "string" }
+      - { label: "Año", name: "anio", widget: "string" }
+      - { label: "Tipo", name: "tipo", widget: "string" }
+      - { label: "Colaboradores", name: "colaboradores", widget: "string", required: false }
+      - { label: "Área de construcción", name: "area", widget: "string", required: false }
+      - { label: "Descripción", name: "desc", widget: "text" }
+      - label: "Imagen de portada (catálogo)"
+        name: "planta"
+        widget: "image"
+      - label: "Imágenes del proyecto"
+        name: "imagenes"
+        widget: "list"
+        field: { label: "Imagen o video", name: "src", widget: "file" }
+        hint: "La primera imagen es el HERO (foto/video principal). El resto forma la galería en orden."
+
+  - name: "press"
+    label: "Press"
+    files:
+      - label: "Publicaciones"
+        name: "press"
+        file: "site/content/press.json"
+        fields:
+          - label: "Artículos"
+            name: "items"
+            widget: "list"
+            field:
+              fields:
+                - { label: "Título", name: "titulo", widget: "string" }
+                - { label: "Fuente", name: "fuente", widget: "string" }
+                - { label: "URL", name: "url", widget: "string" }
