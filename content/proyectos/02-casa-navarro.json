@@ -2,8 +2,8 @@
   "imagenes": [
     "/images/uploads/20_foto.jpg",
     "/images/uploads/04_foto.jpg",
-    "/images/uploads/01_hero.jpg",
     "/images/uploads/09_foto.jpg",
+    "/images/uploads/01_hero.jpg",
     "/images/uploads/11_foto.jpg",
     "/images/uploads/03_foto.jpg",
     "/images/uploads/23_foto.jpg",
@@ -18,8 +18,7 @@
     "/images/uploads/02_foto.jpg",
     "/images/uploads/24_foto.jpg",
     "/images/uploads/25_foto.jpg",
-    "/images/uploads/26_foto.jpg",
-    "/images/uploads/alzado.jpg"
+    "/images/uploads/26_foto.jpg"
   ],
   "num": "02",
   "nombre": "Casa Navarro",
