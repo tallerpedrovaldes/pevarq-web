@@ -2,13 +2,13 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "site/images/uploads"
+media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
   - name: "proyectos"
     label: "Proyectos"
-    folder: "site/content/proyectos"
+    folder: "content/proyectos"
     create: true
     slug: "{{slug}}"
     extension: "json"
@@ -29,7 +29,10 @@ collections:
       - label: "Imágenes del proyecto"
         name: "imagenes"
         widget: "list"
-        field: { label: "Imagen o video", name: "src", widget: "file" }
+        field:
+          label: "Imagen o video"
+          name: "src"
+          widget: "file"
         hint: "La primera imagen es el HERO (foto/video principal). El resto forma la galería en orden."
 
   - name: "press"
@@ -37,13 +40,12 @@ collections:
     files:
       - label: "Publicaciones"
         name: "press"
-        file: "site/content/press.json"
+        file: "content/press.json"
         fields:
           - label: "Artículos"
             name: "items"
             widget: "list"
-            field:
-              fields:
-                - { label: "Título", name: "titulo", widget: "string" }
-                - { label: "Fuente", name: "fuente", widget: "string" }
-                - { label: "URL", name: "url", widget: "string" }
+            fields:
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Fuente", name: "fuente", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
