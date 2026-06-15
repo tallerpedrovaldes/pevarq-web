@@ -1,23 +1,23 @@
 {
+  "imagenes": [
+    "/images/uploads/01_hero.mp4",
+    "/images/uploads/03_foto.png",
+    "/images/uploads/02_foto.png",
+    "/images/uploads/04_foto.png",
+    "/images/uploads/05_foto.png",
+    "/images/uploads/06_foto.png",
+    "/images/uploads/07_foto.png",
+    "/images/uploads/08_foto.png",
+    "/images/uploads/09_foto.png",
+    "/images/uploads/10_foto.png"
+  ],
   "num": "04",
   "nombre": "Casa RD",
-  "ubicacion": "Morelia, Michoacán",
+  "area": "250 m²",
+  "desc": "Casa RD reinterpreta la vivienda que encontramos, una y otra vez, en los fraccionamientos mexicanos: terrenos que apenas dicen algo del lugar, regidos solo por un reglamento. El reto era otro: condensar en un mismo proyecto las necesidades de una familia a lo largo de toda una vida, desde el crecimiento de los hijos hasta la vejez.\n\nEn planta baja se reúnen el programa principal y la recámara de los padres; las áreas comunes se despliegan bajo un juego de alturas que comprime y expande el espacio, dando una sensación de amplitud donde el área es, en realidad, reducida. Hacia arriba, las recámaras secundarias se abren a patios y jardines.\n\nLa flexibilidad es la idea que sostiene todo: el comedor puede intercambiarse con la sala, la recámara principal volverse estudio u oficina, las secundarias —de proporciones generosas— podrían convertirse en la principal, y el rooftop en cuarto, oficina o gimnasio. Una casa pensada para evolucionar contigo, de modo que no haya necesidad de cambiar de hogar cuando cambien las necesidades.",
   "anio": "2025",
   "tipo": "Residencial",
-  "desc": "Casa RD reinterpreta la vivienda que encontramos, una y otra vez, en los fraccionamientos mexicanos: terrenos que apenas dicen algo del lugar, regidos solo por un reglamento. El reto era otro: condensar en un mismo proyecto las necesidades de una familia a lo largo de toda una vida, desde el crecimiento de los hijos hasta la vejez.\n\nEn planta baja se reúnen el programa principal y la recámara de los padres; las áreas comunes se despliegan bajo un juego de alturas que comprime y expande el espacio, dando una sensación de amplitud donde el área es, en realidad, reducida. Hacia arriba, las recámaras secundarias se abren a patios y jardines.\n\nLa flexibilidad es la idea que sostiene todo: el comedor puede intercambiarse con la sala, la recámara principal volverse estudio u oficina, las secundarias —de proporciones generosas— podrían convertirse en la principal, y el rooftop en cuarto, oficina o gimnasio. Una casa pensada para evolucionar contigo, de modo que no haya necesidad de cambiar de hogar cuando cambien las necesidades.",
   "planta": "/images/proyectos/04-casa-rd/portada.jpg",
   "colaboradores": "—",
-  "area": "250 m²",
-  "imagenes": [
-    "https://drive.google.com/uc?export=view&id=1dUiwOvi4HmZQGwrSuVgxWHhxi14ChRA_",
-    "/images/proyectos/04-casa-rd/02.jpg",
-    "/images/proyectos/04-casa-rd/03.jpg",
-    "https://drive.google.com/uc?export=view&id=1SkqFHZ0grIXHvXGU5-LQdFNh87Rmitzs",
-    "https://drive.google.com/uc?export=view&id=16C_Wmn9dV_0sIxL4twsEm8LS3rbs9XXl",
-    "https://drive.google.com/uc?export=view&id=1O04T6Oy2xGFRYJ8XFbP3c4yWH7iQGukE",
-    "https://drive.google.com/uc?export=view&id=1YRK566JYOMX-lyg0JcEuXh-bexKMIfUu",
-    "https://drive.google.com/uc?export=view&id=1jfngBtr7sdVQwV7U38V5OeI-pxo9T7MA",
-    "https://drive.google.com/uc?export=view&id=1Iad5zzKFNTOMfJNxMyalf49TPGSTp7sD",
-    "https://drive.google.com/uc?export=view&id=1xur8YhY6B7Uxpdp0j-vPdVxMGNQuCsGn"
-  ]
+  "ubicacion": "Morelia, Michoacán"
 }
