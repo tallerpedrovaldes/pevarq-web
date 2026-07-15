@@ -34,11 +34,15 @@
   max-width: 920px;
 }
 .tl-content-photo {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 56px;
-  align-items: start;
-  max-width: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.tl-photo {
+  width: 220px;
 }
 .tl-photo img {
   width: 100%;
@@ -47,10 +51,6 @@
   filter: grayscale(1);
 }
 .tl-textblock { width: 100%; }
-@media (max-width: 768px) {
-  .tl-content-photo { grid-template-columns: 1fr; gap: 24px; }
-  .tl-photo { max-width: 200px; }
-}
 .tl-brand {
   font-family: var(--font-title);
   font-weight: 700;
@@ -67,7 +67,7 @@
 }
 .tl-text {
   font-family: var(--font-body);
-  font-size: clamp(12px, 1.1vw, 14px);
+  font-size: clamp(11px, 1vw, 13px);
   font-weight: 300;
   line-height: 1.8;
   color: #2a2a2a;
@@ -1183,7 +1183,6 @@ nav.inv .nav-iso img { filter:invert(1); }
         <img src="/images/assets/pedro-taller.jpg" alt="Pedro Valdés">
       </div>
       <div class="tl-textblock">
-        <div class="tl-brand">pevarq</div>
         <div class="tl-cols">
           <p class="tl-text">Entendemos la arquitectura como un proceso de aprendizaje continuo donde el diseño surge del diálogo entre el lugar, el cliente y el taller. Trabajamos desde la convicción de que las mejores ideas no aparecen de manera aislada, sino que se construyen sobre la experiencia, la colaboración y el conocimiento acumulado a través del tiempo.</p>
           <p class="tl-text">Pedro Valdés Sánchez es arquitecto egresado del ITESO en Guadalajara, con estudios en Alemania y España. Su práctica abarca proyectos de diseño, construcción y visualización arquitectónica. Además de su pasión por el oficio, encuentra inspiración en correr por una ciudad al amanecer, pasar una tarde en un jardín o simplemente observar cómo transcurre la vida cotidiana.</p>
