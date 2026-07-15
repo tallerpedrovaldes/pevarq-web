@@ -141,9 +141,7 @@ nav.inv .nav-iso img { filter:invert(1); }
   background:var(--white);
   display:flex; align-items:center; justify-content:center;
 }
-.landing-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-.landing-ph { position:absolute; inset:0; background:var(--white); display:flex; align-items:center; justify-content:center; }
-.landing-ph span { font-family:var(--font-title); font-size:9px; letter-spacing:.35em; text-transform:uppercase; color:#ddd; }
+.landing-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; } .landing-ph { position:absolute; inset:0; background:var(--white); display:flex; align-items:center; justify-content:center; } .landing-ph span { font-family:var(--font-title); font-size:9px; letter-spacing:.35em; text-transform:uppercase; color:#ddd; }
 
 .l-isotipo-landing {
   position:absolute;
@@ -206,30 +204,9 @@ nav.inv .nav-iso img { filter:invert(1); }
 .cat-contact a:hover { opacity:0.45; }
 .cat-section-lbl { position:absolute; top:24px; left:44px; font-family:var(--font-title); font-size:10px; font-weight:600; letter-spacing:.3em; text-transform:uppercase; color:var(--terracota); z-index:10; }
 
-/* Cards flotantes */
-
-
-
-
-
-/* Fila 1 */
-
-
-
-/* Fila 2 */
-
-
-
-
 .pcard img { width:100%; height:100%; object-fit:contain; background:var(--white); display:block; }
 
-/* Overlay: fondo blanco semitransparente, texto a la izquierda-centro */
-
 .pcard:hover 
-
-
-
-
 
 /* =====================
    PROYECTO INDIVIDUAL
@@ -243,7 +220,6 @@ nav.inv .nav-iso img { filter:invert(1); }
   overflow:hidden;
 }
 
-/* Mitad izquierda — info del proyecto */
 .proj-info {
   width:50%;
   height:100%;
@@ -259,7 +235,6 @@ nav.inv .nav-iso img { filter:invert(1); }
 .proj-ficha-val { font-size:14px; color:var(--black); line-height:1.5; }
 .proj-desc { font-size:14px; line-height:1.85; color:#555; max-width:none; text-align:justify; white-space:pre-line;}
 
-/* Mitad derecha — libreta + flechas */
 .proj-libro-wrap {
   width:50%;
   height:100%;
@@ -275,7 +250,6 @@ nav.inv .nav-iso img { filter:invert(1); }
   transition:opacity .4s ease;
 }
 
-/* Flechas tipo Apple — minimalistas */
 .proj-arrow {
   position:absolute;
   top:50%;
@@ -291,7 +265,6 @@ nav.inv .nav-iso img { filter:invert(1); }
 .proj-arrow.next { right:8px; }
 .proj-arrow svg { display:block; }
 
-/* Volver */
 .proj-back {
   position:absolute; top:28px; left:44px; z-index:50;
   display:flex; align-items:center; gap:10px;
@@ -311,7 +284,6 @@ nav.inv .nav-iso img { filter:invert(1); }
   flex-direction: column;
 }
 
-/* Header superior: ubicación / email / redes */
 .ct-top {
   position: absolute;
   bottom: 28px;
@@ -351,7 +323,6 @@ nav.inv .nav-iso img { filter:invert(1); }
 }
 .ct-social a:hover { opacity: .5; }
 
-/* Formulario centrado */
 .ct-form-wrap {
   flex: 1;
   display: flex;
@@ -423,20 +394,17 @@ nav.inv .nav-iso img { filter:invert(1); }
 
 @keyframes fi { from{ opacity:0; } to{ opacity:1; } }
 
-/* ─── CATÁLOGO scroll horizontal ─── */
 #catalogo { background:#ffffff; }
 
-/* Rail de cards — scroll horizontal, fijo en el centro vertical */
 .cat-rail-wrap {
   position:absolute;
-  /* Área central — entre isotipo (top~70px) y branding (bottom~120px) */
   top:80px;
   bottom:110px;
   left:0;
   right:0;
   display:flex;
   align-items:center;
-  overflow:hidden;   /* el scroll lo maneja el rail interno */
+  overflow:hidden;
 }
 
 .cat-rail {
@@ -449,14 +417,13 @@ nav.inv .nav-iso img { filter:invert(1); }
   overflow-x:auto;
   overflow-y:hidden;
   scroll-behavior:smooth;
-  scrollbar-width:none;       /* Firefox */
-  -ms-overflow-style:none;    /* IE */
+  scrollbar-width:none;
+  -ms-overflow-style:none;
   cursor:grab;
 }
 .cat-rail::-webkit-scrollbar { display:none; }
 .cat-rail:active { cursor:grabbing; }
 
-/* Cada "nube" = par de cards en columna */
 .cat-pair {
   display:flex;
   flex-direction:column;
@@ -464,7 +431,6 @@ nav.inv .nav-iso img { filter:invert(1); }
   flex-shrink:0;
 }
 
-/* Card individual */
 .hcard {
   position:relative;
   display:block;
@@ -528,7 +494,6 @@ nav.inv .nav-iso img { filter:invert(1); }
   text-align:center;
 }
 
-/* Indicador de scroll — flecha discreta derecha */
 .cat-scroll-hint {
   position:absolute;
   right:20px;
@@ -536,7 +501,7 @@ nav.inv .nav-iso img { filter:invert(1); }
   transform:translateY(-50%);
   z-index:30;
   opacity:0.35;
-  pointer-events:all;  /* clickeable */
+  pointer-events:all;
   cursor:none;
   padding:12px;
   background:none;
@@ -568,17 +533,12 @@ nav.inv .nav-iso img { filter:invert(1); }
   50%      { opacity:0.4;  transform:translateY(-50%) translateX(4px); }
 }
 
-
-/* =============================================
-   PROYECTO INDIVIDUAL
-   ============================================= */
 #proyecto {
   background:#ffffff;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
-/* Contenedor general con márgenes tipo "marco" */
 .proj-page {
   width: 100%;
   min-height: 100vh;
@@ -586,7 +546,6 @@ nav.inv .nav-iso img { filter:invert(1); }
   box-sizing: border-box;
 }
 
-/* ── HERO ── */
 .proj-hero {
   width: 100%;
   height: 72vh;
@@ -618,8 +577,6 @@ nav.inv .nav-iso img { filter:invert(1); }
   text-transform: uppercase;
   color: #bbb;
 }
-
-/* ── FICHA TÉCNICA ── debajo del hero */
 
 .proj-ficha-wrap {
   padding: 6% 6%;
@@ -677,14 +634,12 @@ nav.inv .nav-iso img { filter:invert(1); }
   align-self: center;
 }
 
-/* ── GALERÍA ── fotos con pequeño gap y margen = mismo "marco" */
 .proj-galeria {
   display: flex;
   flex-direction: column;
   gap: 3px;
 }
 
-/* Foto individual */
 .proj-foto {
   width: 100%;
   overflow: hidden;
@@ -698,8 +653,6 @@ nav.inv .nav-iso img { filter:invert(1); }
   display: block;
   cursor: none;
 }
-/* Proporciones fijas según orientación detectada */
-/* aspect-ratio se asigna dinámicamente vía JS según cada imagen */
 .proj-foto-ph {
   width: 100%;
   aspect-ratio: 16/9;
@@ -716,7 +669,6 @@ nav.inv .nav-iso img { filter:invert(1); }
   color: #ccc;
 }
 
-/* Foto grande horizontal */
 .proj-foto.size-full { aspect-ratio: 16/7; }
 .proj-foto-single {
   width: 100%;
@@ -729,25 +681,15 @@ nav.inv .nav-iso img { filter:invert(1); }
   height: auto;
   display: block;
 }
-/* Par de fotos lado a lado */
 .proj-foto-pair {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3px;
   align-items: start;
 }
-/* aspect-ratio asignado por JS */
-/* Foto vertical */
 .proj-foto.size-vert { aspect-ratio: 3/4; }
-/* Foto cuadrada */
 .proj-foto.size-sq { aspect-ratio: 1/1; }
 
-/* ── PLANTA con flechas de nivel ── */
-
-
-
-
-/* Flechas de nivel dentro de la planta */
 .planta-nav {
   position: absolute;
   bottom: 16px;
@@ -768,8 +710,6 @@ nav.inv .nav-iso img { filter:invert(1); }
 .planta-nav button:hover svg line,
 .planta-nav button:hover svg polyline { stroke: #fff; }
 
-
-/* ── NAVEGACIÓN entre proyectos ── */
 .proj-nav {
   position: fixed;
   top: 50%;
@@ -798,7 +738,6 @@ nav.inv .nav-iso img { filter:invert(1); }
   writing-mode: vertical-rl;
 }
 
-/* ── HEADER fijo dentro del proyecto ── */
 .proj-header {
   position: sticky;
   top: 0;
@@ -841,8 +780,6 @@ nav.inv .nav-iso img { filter:invert(1); }
 }
 .proj-header-back:hover { opacity: 1; }
 
-
-/* LIGHTBOX — visor de fotos a pantalla completa */
 .lightbox {
   position: fixed; inset: 0; z-index: 500;
   background: rgba(255,255,255,0.97);
@@ -878,7 +815,6 @@ nav.inv .nav-iso img { filter:invert(1); }
   font-size: 10px; letter-spacing: .25em;
   color: #999;
 }
-
 
 /* =====================
    PRESS — estilo periódico, centrado
@@ -985,8 +921,7 @@ nav.inv .nav-iso img { filter:invert(1); }
 
 <!-- ===== LANDING ===== -->
 <div class="page active" id="landing">
-  <!-- <video class="landing-video" autoplay muted loop playsinline src="collage.mp4"></video> -->
-  <div class="landing-ph"><span>Video collage — loop</span></div>
+ <video class="landing-video" autoplay muted loop playsinline src="/images/landing.mp4"></video>
   <a href="#" onclick="goTo('landing'); return false;" style="position:absolute;top:24px;left:50%;transform:translateX(-50%);z-index:10;display:block;cursor:none;"><img src="/images/assets/isotipo.png" style="width:20px;display:block;" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'"></a>
   <div class="l-wordmark-wrap">
     <img class="l-wordmark" src="/images/assets/wordmark.png" alt="pedro valdés arquitectos">
@@ -1290,7 +1225,6 @@ let currentPage = 'landing';
 let currentProyecto = 0;
 
 function goTo(page) {
-  // Sincronizar logos del catálogo con los del landing
   const lw = document.querySelector('.l-wordmark');
   const li = document.querySelector('a[onclick*="landing"] img');
   if(lw) {
@@ -1304,9 +1238,7 @@ function goTo(page) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(page).classList.add('active');
   currentPage = page;
-  // Nav siempre normal — todas las páginas tienen fondo blanco
   document.getElementById('nav').classList.remove('inv');
-  // Cerrar menú si está abierto
   const ov = document.getElementById('ov');
   if(ov.classList.contains('open')) toggleMenu();
   if(page === 'press') loadPress();
@@ -1317,7 +1249,6 @@ function toggleMenu() {
   document.getElementById('ov').classList.toggle('open');
 }
 
-// Abrir proyecto
 async function openProyecto(idx) {
   currentProyecto = idx;
   if(!PROYECTOS.length) await loadProyectosData();
@@ -1344,7 +1275,6 @@ function loadProyecto(idx) {
   set('pArea', p.area || '—');
   set('pDesc', p.desc);
 
-  // HERO + GALERÍA dinámicos
   const imgs = p.imagenes || [];
   const heroEl = document.getElementById('pHero');
   const galEl = document.getElementById('pGaleria');
@@ -1358,20 +1288,17 @@ function loadProyecto(idx) {
   if(galEl) {
     const rest = imgs.slice(1);
     let out = '';
-    let i = 0, big = false; // empezar con un par de fotos
+    let i = 0, big = false;
     while(i < rest.length) {
       if(big) {
-        out += `<div class="proj-foto-single">${mediaTag(rest[i], p.nombre)}</div>
-`;
+        out += `<div class="proj-foto-single">${mediaTag(rest[i], p.nombre)}</div>\n`;
         i += 1;
       } else {
         if(i+1 < rest.length) {
-          out += `<div class="proj-foto-pair"><div class="proj-foto">${mediaTag(rest[i], p.nombre)}</div><div class="proj-foto">${mediaTag(rest[i+1], p.nombre)}</div></div>
-`;
+          out += `<div class="proj-foto-pair"><div class="proj-foto">${mediaTag(rest[i], p.nombre)}</div><div class="proj-foto">${mediaTag(rest[i+1], p.nombre)}</div></div>\n`;
           i += 2;
         } else {
-          out += `<div class="proj-foto-single">${mediaTag(rest[i], p.nombre)}</div>
-`;
+          out += `<div class="proj-foto-single">${mediaTag(rest[i], p.nombre)}</div>\n`;
           i += 1;
         }
       }
@@ -1403,7 +1330,6 @@ function scrollCatPrev() {
   rail.scrollBy({ left: -step, behavior: 'smooth' });
 }
 
-// Rueda del ratón → scroll horizontal en el catálogo
 (function(){
   const wrap = document.querySelector('.cat-rail-wrap');
   if(!wrap) return;
@@ -1415,68 +1341,10 @@ function scrollCatPrev() {
   }, { passive: false });
 })();
 
-
-// Nivel actual de planta
 let currentNivel = 0;
 
-function loadProyecto(idx) {
-  const p = PROYECTOS[idx];
-  if(!p) return;
-  const set = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
-  set('pFichaTitle', p.nombre);
-  set('pUbicacion', p.ubicacion);
-  set('pAnio', p.anio);
-  set('pTipo', p.tipo);
-  set('pColaboradores', p.colaboradores || '—');
-  set('pArea', p.area || '—');
-  set('pDesc', p.desc);
-
-  // HERO + GALERÍA dinámicos
-  const imgs = p.imagenes || [];
-  const heroEl = document.getElementById('pHero');
-  const galEl = document.getElementById('pGaleria');
-
-  if(heroEl) {
-    heroEl.innerHTML = imgs.length
-      ? mediaTag(imgs[0], p.nombre)
-      : '<div class="proj-hero-ph"><span>Foto / Video principal</span></div>';
-  }
-
-  if(galEl) {
-    const rest = imgs.slice(1);
-    let out = '';
-    let i = 0, big = false; // empezar con un par de fotos
-    while(i < rest.length) {
-      if(big) {
-        out += `<div class="proj-foto-single">${mediaTag(rest[i], p.nombre)}</div>
-`;
-        i += 1;
-      } else {
-        if(i+1 < rest.length) {
-          out += `<div class="proj-foto-pair"><div class="proj-foto">${mediaTag(rest[i], p.nombre)}</div><div class="proj-foto">${mediaTag(rest[i+1], p.nombre)}</div></div>
-`;
-          i += 2;
-        } else {
-          out += `<div class="proj-foto-single">${mediaTag(rest[i], p.nombre)}</div>
-`;
-          i += 1;
-        }
-      }
-      big = !big;
-    }
-    galEl.innerHTML = out;
-  }
-
-  const proj = document.getElementById('proyecto');
-  if(proj) proj.scrollTop = 0;
-  setTimeout(adjustFotoAspect, 50);
-  setTimeout(bindLightboxClicks, 50);
-}
-
-
 function prevProyecto() {
-  // Orden del catálogo: RD(idx4→pos0), KaiKai(idx2→pos1), Navarro(idx1→pos2), Arreygue(idx0→pos3)
-  const catOrder = [3, 2, 1, 0]; // índices en PROYECTOS según orden catálogo
+  const catOrder = [3, 2, 1, 0];
   const pos = catOrder.indexOf(currentProyecto);
   const prevPos = (pos - 1 + catOrder.length) % catOrder.length;
   currentProyecto = catOrder[prevPos];
@@ -1491,28 +1359,16 @@ function nextProyecto() {
   loadProyecto(currentProyecto);
 }
 
-function prevNivel() {
-  // Se implementará cuando haya plantas de múltiples niveles
-}
-function nextNivel() {
-  // Se implementará cuando haya plantas de múltiples niveles
-}
+function prevNivel() {}
+function nextNivel() {}
 
-
-
-
-
-// Detectar orientación de cada imagen y ajustar su contenedor
 function adjustFotoAspect() {
-  // Las imágenes usan height:auto, mantienen su proporción natural sin recortes.
   document.querySelectorAll('.proj-foto img').forEach(img => {
     const wrap = img.closest('.proj-foto');
     if(wrap) wrap.style.aspectRatio = '';
   });
 }
 
-
-// LIGHTBOX
 let lightboxImages = [];
 let lightboxIndex = 0;
 
@@ -1551,7 +1407,6 @@ function lightboxPrev(e) {
   showLightboxImage();
 }
 
-// Teclado: flechas y escape
 document.addEventListener('keydown', e => {
   if(!document.getElementById('lightbox').classList.contains('open')) return;
   if(e.key === 'ArrowRight') lightboxNext();
@@ -1559,15 +1414,12 @@ document.addEventListener('keydown', e => {
   if(e.key === 'Escape') closeLightbox();
 });
 
-// Click en imágenes de galería/hero abre el lightbox
 function bindLightboxClicks() {
   document.querySelectorAll('#proyecto .proj-galeria img, #proyecto .proj-hero img').forEach(img => {
     img.onclick = () => openLightbox(img);
   });
 }
 
-
-// PRESS — lista de publicaciones
 const PRESS = [
   {
     titulo: "Navarro House",
