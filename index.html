@@ -33,6 +33,24 @@
   width: 100%;
   max-width: 920px;
 }
+.tl-content-photo {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 56px;
+  align-items: start;
+  max-width: none;
+}
+.tl-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(1);
+}
+.tl-textblock { width: 100%; }
+@media (max-width: 768px) {
+  .tl-content-photo { grid-template-columns: 1fr; gap: 24px; }
+  .tl-photo { max-width: 200px; }
+}
 .tl-brand {
   font-family: var(--font-title);
   font-weight: 700;
@@ -49,9 +67,9 @@
 }
 .tl-text {
   font-family: var(--font-body);
-  font-size: clamp(14px, 1.5vw, 17px);
+  font-size: clamp(12px, 1.1vw, 14px);
   font-weight: 300;
-  line-height: 1.85;
+  line-height: 1.8;
   color: #2a2a2a;
   letter-spacing: .01em;
   text-align: justify;
@@ -123,7 +141,9 @@ nav.inv .nav-iso img { filter:invert(1); }
   background:var(--white);
   display:flex; align-items:center; justify-content:center;
 }
-.landing-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; } .landing-ph { position:absolute; inset:0; background:var(--white); display:flex; align-items:center; justify-content:center; } .landing-ph span { font-family:var(--font-title); font-size:9px; letter-spacing:.35em; text-transform:uppercase; color:#ddd; }
+.landing-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.landing-ph { position:absolute; inset:0; background:var(--white); display:flex; align-items:center; justify-content:center; }
+.landing-ph span { font-family:var(--font-title); font-size:9px; letter-spacing:.35em; text-transform:uppercase; color:#ddd; }
 
 .l-isotipo-landing {
   position:absolute;
@@ -965,7 +985,8 @@ nav.inv .nav-iso img { filter:invert(1); }
 
 <!-- ===== LANDING ===== -->
 <div class="page active" id="landing">
- <video class="landing-video" autoplay muted loop playsinline src="/images/landing.mp4"></video>
+  <!-- <video class="landing-video" autoplay muted loop playsinline src="collage.mp4"></video> -->
+  <div class="landing-ph"><span>Video collage — loop</span></div>
   <a href="#" onclick="goTo('landing'); return false;" style="position:absolute;top:24px;left:50%;transform:translateX(-50%);z-index:10;display:block;cursor:none;"><img src="/images/assets/isotipo.png" style="width:20px;display:block;" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='1'"></a>
   <div class="l-wordmark-wrap">
     <img class="l-wordmark" src="/images/assets/wordmark.png" alt="pedro valdés arquitectos">
@@ -1222,11 +1243,16 @@ nav.inv .nav-iso img { filter:invert(1); }
 
   <!-- Texto del taller -->
   <div class="tl-wrap">
-    <div class="tl-content">
-      <div class="tl-brand">pevarq</div>
-      <div class="tl-cols">
-        <p class="tl-text">Entendemos la arquitectura como un proceso de aprendizaje continuo donde el diseño surge del diálogo entre el lugar, el cliente y el taller. Trabajamos desde la convicción de que las mejores ideas no aparecen de manera aislada, sino que se construyen sobre la experiencia, la colaboración y el conocimiento acumulado a través del tiempo.</p>
-        <p class="tl-text">Pedro Valdés Sánchez es arquitecto egresado del ITESO en Guadalajara, con estudios en Alemania y España. Su práctica abarca proyectos de diseño, construcción y visualización arquitectónica. Además de su pasión por el oficio, encuentra inspiración en correr por una ciudad al amanecer, pasar una tarde en un jardín o simplemente observar cómo transcurre la vida cotidiana.</p>
+    <div class="tl-content tl-content-photo">
+      <div class="tl-photo">
+        <img src="/images/assets/pedro-taller.jpg" alt="Pedro Valdés">
+      </div>
+      <div class="tl-textblock">
+        <div class="tl-brand">pevarq</div>
+        <div class="tl-cols">
+          <p class="tl-text">Entendemos la arquitectura como un proceso de aprendizaje continuo donde el diseño surge del diálogo entre el lugar, el cliente y el taller. Trabajamos desde la convicción de que las mejores ideas no aparecen de manera aislada, sino que se construyen sobre la experiencia, la colaboración y el conocimiento acumulado a través del tiempo.</p>
+          <p class="tl-text">Pedro Valdés Sánchez es arquitecto egresado del ITESO en Guadalajara, con estudios en Alemania y España. Su práctica abarca proyectos de diseño, construcción y visualización arquitectónica. Además de su pasión por el oficio, encuentra inspiración en correr por una ciudad al amanecer, pasar una tarde en un jardín o simplemente observar cómo transcurre la vida cotidiana.</p>
+        </div>
       </div>
     </div>
   </div>
