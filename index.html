@@ -87,11 +87,14 @@
   .tl-text { font-size: 13px; line-height: 1.7; }
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
-html { color-scheme: only light; }
+* { margin:0; padding:0; box-sizing:border-box; forced-color-adjust: none; }
+html { color-scheme: only light; background: #ffffff; }
+body { background: #ffffff !important; color: #0a0a0a !important; }
 @media (prefers-color-scheme: dark) {
-  html { background: #ffffff; filter: none !important; }
-  body { background: #ffffff !important; color: #0a0a0a !important; }
+  html, body { background: #ffffff !important; color: #0a0a0a !important; }
+  .page { background: #ffffff !important; }
+  .overlay { background: rgba(8,8,8,0.97) !important; }
+  .m-links a { color: #ffffff !important; }
   img, video { filter: none !important; }
 }
 html { scroll-behavior:smooth; }
