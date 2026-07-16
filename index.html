@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="only light">
 <title>pevarq — pedro valdés arquitectos</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Lato:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
@@ -88,6 +89,11 @@
 
 * { margin:0; padding:0; box-sizing:border-box; }
 html { color-scheme: only light; }
+@media (prefers-color-scheme: dark) {
+  html { background: #ffffff; filter: none !important; }
+  body { background: #ffffff !important; color: #0a0a0a !important; }
+  img, video { filter: none !important; }
+}
 html { scroll-behavior:smooth; }
 body { background:var(--white); color:var(--black); font-family:var(--font-body); font-weight:300; cursor:none; overflow:hidden; }
 
